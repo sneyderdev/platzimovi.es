@@ -1,0 +1,247 @@
+/*----- GENERAL -----*/
+:root {
+  --font: 'Quicksand', sans-serif;
+  --normal-size: 16px;
+  --green-color: #95ca3e;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font);
+}
+
+.wrapper {
+  max-width: 1440px;
+  margin: auto;
+}
+
+/*----- HEADER -----*/
+.main_header {
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, .4);
+  background: linear-gradient(90deg, #1c3643, #273b47 25%, #1e5372);
+  color: #fff;
+}
+
+.grid_header {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  align-items: center;
+  padding: 5px 20px;
+}
+
+.logo a {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  color: #fff;
+  text-decoration: none;
+}
+
+.logo-img {
+  max-width: 80px;
+  margin-right: 5px;
+}
+
+.logo-video {
+  margin-top: 1px;
+}
+
+.search_form {
+  width: 100%;
+}
+
+.search_bar {
+  font-family: var(--font);
+  height: 35px;
+  width: inherit;
+  border-radius: 10px;
+  padding-left: 10px;
+  border: 1px solid #cfcfcf;
+  outline: 0;
+}
+
+.search_bar:focus {
+  border-color: var(--green-color);
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  cursor: pointer;
+}
+
+.user-image--container {
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+}
+
+.user-name {
+  font-size: var(--normal-size);
+  letter-spacing: .5px;
+}
+
+.user-image {
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-arrow {
+  margin-top: -6px;
+}
+
+/*---- MAIN SECTION ----*/
+.grid_content {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: 'navbar main_section';
+}
+
+.main_sidebar { /*----- NAVBAR -----*/
+  grid-area: navbar;
+  display: grid;
+  grid-template-rows: repeat(3, 70px) 1fr;
+  background: linear-gradient(to right, var(--green-color), #85c638);
+  padding: 30px 10px;
+  gap: 10px;
+}
+
+.option {
+  text-align: center;
+}
+
+.option:last-child {
+  align-self: end;
+}
+
+.option-link {
+  color: #fff;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.option-link:hover {
+  color: rgba(0, 0, 0, .4);
+}
+
+.option-img {
+  font-size: 25px;
+}
+
+.option-title {
+  font-weight: normal;
+}
+
+.sub-grid_container { /*----- MAIN CONTENT -----*/
+  grid-area: main_section;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: end;
+  padding: 30px;
+  gap: 20px 40px;
+}
+
+.topic-title {
+  grid-column: 1 / -1;
+}
+
+.topic-movie {
+  background-image: url('../images/laptop.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.topic-movie:hover .movie_description {
+  top: 0;
+}
+
+.movie_description {
+  background-color: rgba(149, 202, 62, .8);
+  padding: 10px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  height: 100%;
+  transition: all .3s;
+}
+
+.description_title {
+  letter-spacing: .7px;
+}
+
+/*----- FOOTER -----*/
+.never_stop {
+  grid-column: 1 / -1;
+  text-align-last: center;
+}
+
+/*----- MEDIA QUERYS -----*/
+@media screen and (max-width: 768px) {
+  /*----- HEADER -----*/
+  .grid_header {
+    padding: 5px;
+  }
+
+  .search_form {
+    display: none;
+  }
+
+  .user {
+    grid-column: 2 / -1;
+  }
+
+  /*----- MAIN SECTION -----*/
+  .sub-grid_container {  /*----- MAIN CONTENT -----*/
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  /*----- HEADER -----*/
+  .user-name {
+    font-size: .8em;
+  }
+  
+  
+  /*----- MAIN SECTION -----*/
+  .grid_content {
+    display: block;
+  }
+
+  .main_sidebar { /*----- NAVBAR -----*/
+    grid-template: 1fr / repeat(4, auto);
+    font-size: var(--normal-size);
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .option-link {
+    font-size: .8em;
+  }
+
+  .option-img {
+    font-size: 1.5em;
+  }
+
+  .sub-grid_container { /*----- MAIN CONTENT -----*/
+    grid-template-columns: 1fr;
+  }
+
+  /* FOOTER */
+  .never_stop {
+    font-size: .8em;
+  }
+}
